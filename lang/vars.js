@@ -15,14 +15,11 @@ const languagePack = {
         ],
         successfulMessages: [
             "Authentication success! Logging in!",
-            "Logging in! Biatch",
-            "Don't watch too much porn, bro.",
+            "Logging in!",
             "Splish! Splash! Your password is trash!",
             "Looking good today~",
-            "What are you doing, stepbro?~",
             "You are someone's reason to smile.",
-            "Finally, someone with a good amount of IQ!",
-            "Please, don't watch porn."
+            "Finally, someone with a good amount of IQ!"
         ],
         months: [
 			'January',
@@ -135,7 +132,7 @@ const languagePack = {
         afternoon: 'Boa Tarde',
         evening: 'Boa Noite',
         of: 'de',
-    }
+    },
 	de_de: {
         goodbye_message: 'Trennen der Verbindung...',
         input_password: 'Geben Sie Ihr Passwort ein',
@@ -176,13 +173,11 @@ const languagePack = {
         successfulMessages: [
             "Authentifizierung erfolgreich! Angemeldet!",
             "Überraschung! Angemeldet!",
-            "Guck nicht zu viele Pornos, Bruder.",
             "Platsch! Platsch! Dein Passwort ist Schrott!",
             "Siehst gut aus heute~",
             "Wie gehts, Mann?",
             "Du bist für jemanden ein Grund zum Lächeln.",
             "Endlich mal jemand mit einem ordentlichen Maß an IQ!",
-            "Bitte, schau keine Pornos."
         ],
         power: {
             shutdown: {name:'Herunterfahren', message: 'Herunterfahren...'},
