@@ -1,4 +1,4 @@
-class Language {
+class GLanguage {
     constructor() {
         this._localStorage = window.localStorage;
         this._language = this._getStorageItem('Lang') || this._getStorageItem('origLang') || "en_us";
@@ -31,8 +31,15 @@ class Language {
     }
 
     _getPowerTranslate(powerItem, fallback, powerItemIndex = null) {
+        if (typeof this._languagePack.power === "undefined" || typeof this._languagePack.power[powerItem] === "undefined") {
+            return fallback;
+        }
 
-        return (typeof this._languagePack.power === "undefined" || typeof this._languagePack.power[powerItem] === 'undefined' ? fallback : (powerItemIndex != null ? this._languagePack.power[powerItem][powerItemIndex] : this._languagePack.power[powerItem]));
+        if (powerItemIndex != null) {
+            return this._languagePack.power[powerItem][powerItemIndex];
+        } else {
+            return this._languagePack.power[powerItem];
+        }
     }
 
     _getTanslateStringByIdElement(idItem) {

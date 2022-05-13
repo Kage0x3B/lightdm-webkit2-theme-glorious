@@ -7,7 +7,7 @@ async function initGreeter() {
     if (greeter_config.greeter.debug_mode) {
         // Instantiate debug mode
         // Comment this line to let lightdm do its own things
-        debug = new Debug();
+        //debug = new Debug();
     }
 
     lightdm.authentication_complete?.connect(() => authentication_complete());
@@ -23,56 +23,56 @@ async function initGreeter() {
     });
 
     // Instantiate image profile
-    userProfile = new UserProfile();
+    window.userProfile = new UserProfile();
 
     // Instantiate greeter screen
-    greeterScreen = new GreeterScreen();
+    window.greeterScreen = new GreeterScreen();
 
     // Instantiate dark screen
-    loginFade = new LoginFade();
+    window.loginFade = new LoginFade();
 
     // Instantiate goodbye screen
-    goodbye = new Goodbye();
+    window.goodbye = new Goodbye();
 
     // Instantiate accounts settings
-    accounts = new Accounts();
+    window.accounts = new Accounts();
 
     // Instantiate sessions settings
-    sessions = new Sessions();
+    window.sessions = new Sessions();
 
     // Instantiate power settings
-    power = new Power();
+    window.power = new Power();
 
     // Instantiate sidebar
-    sidebar = new Sidebar();
+    window.sidebar = new Sidebar();
 
     // Instantiate main screen buttons
-    mainScreenButtons = new MainScreenButtons();
+    window.mainScreenButtons = new MainScreenButtons();
 
     // Instantiate date time
-    dateTime = new DateTime();
+    window.dateTime = new DateTime();
 
     // Instantiate backgrounds settings
-    backgrounds = new Backgrounds();
+    window.backgrounds = new Backgrounds();
     await backgrounds._init();
 
     // Instantiate sidebar navigation
-    sidebarNavigate = new SidebarNavigate();
+    window.sidebarNavigate = new SidebarNavigate();
 
     // Instantiate key binds
-    keyBinds = new KeyBinds();
+    window.keyBinds = new KeyBinds();
 
     // Instantiate themes
-    themes = new Themes();
+    window.themes = new Themes();
 
     // Instantiate key events
-    keyEvents = new KeyEvents();
+    window.keyEvents = new KeyEvents();
 
     // Instantiate swipe event callbacks
-    swipeEventCallback = new SwipeEventCallback();
+    window.swipeEventCallback = new SwipeEventCallback();
 
     // Instantiate authentication
-    authenticate = new Authenticate();
+    window.authenticate = new Authenticate();
 
 }
 
@@ -81,6 +81,9 @@ window.addEventListener("GreeterReady", initGreeter)
 const greeterReady = new Event("GreeterReady");
 
 setTimeout(() => {
-    if (!("lightdm" in window)) debug = new Debug();
+    if (!("lightdm" in window)) {
+        debug = new Debug();
+    }
+
     window.dispatchEvent(greeterReady);
 }, 1000)

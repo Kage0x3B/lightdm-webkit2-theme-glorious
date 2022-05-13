@@ -14,24 +14,24 @@ class MainScreenButtons {
         this._buttonMainSessions.addEventListener(
             'click',
             () => {
-                sidebar.showSidebar();
-                sidebarNavigate.settingsShowSessions();
+                window.sidebar.showSidebar();
+                window.sidebarNavigate.settingsShowSessions();
             }
         );
 
         this._buttonMainSettings.addEventListener(
             'click',
             () => {
-                sidebar.showSidebar();
-                sidebarNavigate.settingsSelectionShow();
+                window.sidebar.showSidebar();
+                window.sidebarNavigate.settingsSelectionShow();
             }
         );
 
         this._buttonMainPowers.addEventListener(
             'click',
             () => {
-                sidebar.showSidebar();
-                sidebarNavigate.settingsShowPowers();
+                window.sidebar.showSidebar();
+                window.sidebarNavigate.settingsShowPowers();
             }
         );
     }

@@ -19,7 +19,7 @@ class Power {
     }
 
     _createPowerObject() {
-        const language = new Language();
+        const language = new GLanguage();
 
         this._powerObject = [
             {

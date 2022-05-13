@@ -9,7 +9,7 @@ class DateTime {
         this._setTime = this._setTime.bind(this);
         this._twentyFourMode = false;
         this._clockUpdater = null;
-        this._Language = new Language();
+        this._Language = new GLanguage();
         this._monthsArr = this._Language._getMonthsArray();
 
         this._daysArr = this._Language._getDaysArray();
