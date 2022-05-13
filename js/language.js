@@ -1,89 +1,75 @@
-
 class Language {
-    constructor()
-    {
+    constructor() {
         this._localStorage = window.localStorage;
         this._language = this._getStorageItem('Lang') ||
-                        this._getStorageItem('origLang');
+            this._getStorageItem('origLang');
         this._languageFallback = 'en_us';
         this._languagePack = this._getLanguagePack();
-        
-        if(this._language != 'en_us')
-        {
+
+        if (this._language != 'en_us') {
             this._translateInterface();
         }
     }
 
-    _saveOriginalLanguage()
-	{
-		this._localStorage.setItem(
-			'origLang',
-			'en_us'
-		);
-	}
+    _saveOriginalLanguage() {
+        this._localStorage.setItem(
+            'origLang',
+            'en_us'
+        );
+    }
 
     _getStorageItem(item) {
-		return this._localStorage.getItem(String(item));
-	}
+        return this._localStorage.getItem(String(item));
+    }
 
-    
-    _getLanguagePack()
-    {
+
+    _getLanguagePack() {
         return languagePack[this._language];
     }
 
-    _getErrorMessages()
-    {
-       
+    _getErrorMessages() {
+
         return (typeof this._languagePack.errorMessages == 'undefined' ? languagePack[this._languageFallback].errorMessages : this._languagePack.errorMessages);
     }
 
-    _getSuccessfulMessages()
-    {
+    _getSuccessfulMessages() {
         return (typeof this._languagePack.successfulMessages == 'undefined' ? languagePack[this._languageFallback].successfulMessages : this._languagePack.successfulMessages);
     }
 
-    _getPowerTranslate(powerItem, fallback, powerItemIndex = null)
-    {
-        
+    _getPowerTranslate(powerItem, fallback, powerItemIndex = null) {
+
         return (typeof this._languagePack.power[powerItem] == 'undefined' ? fallback : (powerItemIndex != null ? this._languagePack.power[powerItem][powerItemIndex] : this._languagePack.power[powerItem]));
     }
 
-    _getTanslateStringByIdElement(idItem)
-    {
-        return this._languagePack[String(idItem).replace(/-/g,'_')];
+    _getTanslateStringByIdElement(idItem) {
+        return this._languagePack[String(idItem).replace(/-/g, '_')];
     }
 
-    _getTranslatedItem(item, fallback = null)
-    {
-        return (typeof this._languagePack[item] != 'undefined' ?  this._languagePack[item] : (fallback != null ? fallback : languagePack[this._languageFallback][item]));
+    _getTranslatedItem(item, fallback = null) {
+        return (typeof this._languagePack[item] != 'undefined' ? this._languagePack[item] : (fallback != null ? fallback : languagePack[this._languageFallback][item]));
     }
 
-    _getDaysArray()
-    {
+    _getDaysArray() {
         return (typeof this._languagePack.days != 'undefined' ? this._languagePack.days : languagePack[this._languageFallback].days);
     }
 
-    _getMonthsArray()
-    {
+    _getMonthsArray() {
         return (typeof this._languagePack.months != 'undefined' ? this._languagePack.months : languagePack[this._languageFallback].months);
     }
-    
-    _translateInterface()
-    {
+
+    _translateInterface() {
         const InputElements = {
-             input_password: document.getElementById("input-password"),
+            input_password: document.getElementById("input-password"),
         };
 
         Object.keys(InputElements).forEach(key => {
             let translate = this._getTanslateStringByIdElement(InputElements[key].id);
-          if(typeof translate != 'undefined' && translate != null && translate != '')
-          {
-            InputElements[String(key)].placeholder = translate;
-           
-          }
+            if (typeof translate != 'undefined' && translate != null && translate != '') {
+                InputElements[String(key)].placeholder = translate;
+
+            }
         });
-       
+
         const InterfaceElements = {
             goodbye: document.getElementById("goodbye-message"),
             item_account: document.getElementById("sidebar-item-account"),
@@ -111,11 +97,10 @@ class Language {
 
         Object.keys(InterfaceElements).forEach(key => {
             let translate = this._getTanslateStringByIdElement(InterfaceElements[String(key)].id);
-          if(typeof translate != 'undefined' && translate != null && translate != '')
-          {
-            InterfaceElements[String(key)].innerHTML = '';
-            InterfaceElements[String(key)].appendChild(document.createTextNode(translate));
-          }
+            if (typeof translate != 'undefined' && translate != null && translate != '') {
+                InterfaceElements[String(key)].innerHTML = '';
+                InterfaceElements[String(key)].appendChild(document.createTextNode(translate));
+            }
         });
     }
 
