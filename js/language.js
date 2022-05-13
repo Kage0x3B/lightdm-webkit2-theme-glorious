@@ -1,44 +1,38 @@
 class Language {
     constructor() {
         this._localStorage = window.localStorage;
-        this._language = this._getStorageItem('Lang') ||
-            this._getStorageItem('origLang');
+        this._language = this._getStorageItem('Lang') || this._getStorageItem('origLang') || "en_us";
         this._languageFallback = 'en_us';
         this._languagePack = this._getLanguagePack();
 
-        if (this._language != 'en_us') {
+        if (this._language !== 'en_us') {
             this._translateInterface();
         }
     }
 
     _saveOriginalLanguage() {
-        this._localStorage.setItem(
-            'origLang',
-            'en_us'
-        );
+        this._localStorage.setItem('origLang', 'en_us');
     }
 
     _getStorageItem(item) {
         return this._localStorage.getItem(String(item));
     }
 
-
     _getLanguagePack() {
         return languagePack[this._language];
     }
 
     _getErrorMessages() {
-
-        return (typeof this._languagePack.errorMessages == 'undefined' ? languagePack[this._languageFallback].errorMessages : this._languagePack.errorMessages);
+        return (typeof this._languagePack.errorMessages === 'undefined' ? languagePack[this._languageFallback].errorMessages : this._languagePack.errorMessages);
     }
 
     _getSuccessfulMessages() {
-        return (typeof this._languagePack.successfulMessages == 'undefined' ? languagePack[this._languageFallback].successfulMessages : this._languagePack.successfulMessages);
+        return (typeof this._languagePack.successfulMessages === 'undefined' ? languagePack[this._languageFallback].successfulMessages : this._languagePack.successfulMessages);
     }
 
     _getPowerTranslate(powerItem, fallback, powerItemIndex = null) {
 
-        return (typeof this._languagePack.power[powerItem] == 'undefined' ? fallback : (powerItemIndex != null ? this._languagePack.power[powerItem][powerItemIndex] : this._languagePack.power[powerItem]));
+        return (typeof this._languagePack.power === "undefined" || typeof this._languagePack.power[powerItem] === 'undefined' ? fallback : (powerItemIndex != null ? this._languagePack.power[powerItem][powerItemIndex] : this._languagePack.power[powerItem]));
     }
 
     _getTanslateStringByIdElement(idItem) {
@@ -103,13 +97,4 @@ class Language {
             }
         });
     }
-
 }
-
-
-
-
-
-
-
-

@@ -132,7 +132,6 @@ class Themes {
     }
 
     _updateLanguageVariable() {
-
         this._localStorage.setItem('Lang', this._inputLanguage.value);
     }
 
